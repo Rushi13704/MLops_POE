@@ -1,39 +1,36 @@
 
 pipeline {
     agent any
-
-    options {
-        timestamps()
-    }
+    options { timestamps() }
 
     stages {
         stage('Check Python') {
             steps {
-                bat'"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" --version'
+                bat '"C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe" --version'
             }
         }
 
         stage('Install Requirements') {
             steps {
-                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" -m pip install -r requirements.txt'
+                bat '"C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Pytest') {
             steps {
-                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" -m pytest'
+                bat '"C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe" -m pytest'
             }
         }
 
         stage('Run Hello App') {
             steps {
-                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" hello.py'
+                bat '"C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe" hello.py'
             }
         }
 
         stage('Evidently Monitoring') {
             steps {
-                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" monitor.py'
+                bat '"C:/Users/DELL/AppData/Local/Programs/Python/Python312/python.exe" monitor.py'
             }
         }
 
@@ -45,13 +42,8 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'POE pipeline completed successfully.'
-        }
-        failure {
-            echo 'Pipeline failed. Check Console Output.'
-        }
+        success { echo 'POE MLOps pipeline completed successfully.' }
+        failure { echo 'Pipeline failed. Check Console Output.' }
+        always { echo 'Pipeline run finished.' }
     }
 }
-
-
