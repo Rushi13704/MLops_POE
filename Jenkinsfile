@@ -9,31 +9,31 @@ pipeline {
     stages {
         stage('Check Python') {
             steps {
-                bat 'python --version'
+                bat'"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" --version'
             }
         }
 
         stage('Install Requirements') {
             steps {
-                bat 'python -m pip install -r requirements.txt'
+                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Pytest') {
             steps {
-                bat 'python -m pytest'
+                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" -m pytest'
             }
         }
 
         stage('Run Hello App') {
             steps {
-                bat 'python hello.py'
+                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" hello.py'
             }
         }
 
         stage('Evidently Monitoring') {
             steps {
-                bat 'python monitor.py'
+                bat '"C:\Users\DELL\AppData\Local\Programs\Python\Python312\python.exe" monitor.py'
             }
         }
 
@@ -53,3 +53,5 @@ pipeline {
         }
     }
 }
+
+
